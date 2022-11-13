@@ -1,0 +1,119 @@
+$ cls && RUST_BACKTRACE=full RUST_LOG=trace ../stc/target/debug/stc test index.ts 2
+[2022-11-13T11:57:02Z INFO  stc] Initialization took 18.3724ms
+[2022-11-13T11:57:02Z INFO  stc] Loading builtin libraries took 501µs
+[2022-11-13T11:57:02Z INFO  stc] Loading typing libraries took 1.1827ms
+thread 'main' panicked at 'internal error: entered unreachable code: ModuleId(1)(Real("index.ts")) is not loaded', /home/redfire/stc/crates/stc_ts_module_loader/src/lib.rs:390:13
+stack backtrace:
+   0:     0x7f733c8dbd40 - std::backtrace_rs::backtrace::libunwind::trace::h7dcbd31e48864197
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/../../backtrace/src/backtrace/libunwind.rs:93:5
+   1:     0x7f733c8dbd40 - std::backtrace_rs::backtrace::trace_unsynchronized::h216822400ebf64da
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/../../backtrace/src/backtrace/mod.rs:66:5
+   2:     0x7f733c8dbd40 - std::sys_common::backtrace::_print_fmt::h5a78b527d124a302
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/sys_common/backtrace.rs:65:5
+   3:     0x7f733c8dbd40 - <std::sys_common::backtrace::_print::DisplayBacktrace as core::fmt::Display>::fmt::hda281edb1d20f1cc
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/sys_common/backtrace.rs:44:22
+   4:     0x7f733c90158e - core::fmt::write::he8ed9cc78b3e631d
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/core/src/fmt/mod.rs:1209:17
+   5:     0x7f733c8d7ce5 - std::io::Write::write_fmt::h4cb1d0d99c5f6d8c
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/io/mod.rs:1682:15
+   6:     0x7f733c8dbb05 - std::sys_common::backtrace::_print::h8e78d19ead7012dd
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/sys_common/backtrace.rs:47:5
+   7:     0x7f733c8dbb05 - std::sys_common::backtrace::print::h4cb84102c95a2cc9
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/sys_common/backtrace.rs:34:9
+   8:     0x7f733c8dd68f - std::panicking::default_hook::{{closure}}::hffcba07877000fe6
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:267:22
+   9:     0x7f733c8dd3ca - std::panicking::default_hook::h56fbf95b87792ca6
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:286:9
+  10:     0x7f733c8dddec - std::panicking::rust_panic_with_hook::h0c64dcacc0796c63
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:688:13
+  11:     0x7f733c8ddb87 - std::panicking::begin_panic_handler::{{closure}}::hc31c28b225c2c8e7
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:579:13
+  12:     0x7f733c8dc1ec - std::sys_common::backtrace::__rust_end_short_backtrace::h4c22ef9155db222a
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/sys_common/backtrace.rs:137:18
+  13:     0x7f733c8dd8a2 - rust_begin_unwind
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:575:5
+  14:     0x7f733c8ff0f3 - core::panicking::panic_fmt::h495784c068d26c3c
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/core/src/panicking.rs:65:14
+  15:     0x7f733ad41ec8 - <stc_ts_module_loader::ModuleGraph<C,R> as swc_graph_analyzer::DepGraph>::deps_of::{{closure}}::hefb6459c156f4900
+                               at /home/redfire/stc/crates/stc_ts_module_loader/src/lib.rs:390:13
+  16:     0x7f733acc0b5b - core::option::Option<T>::unwrap_or_else::h6bfae616abe4c3e4
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/core/src/option.rs:828:21
+  17:     0x7f733ad41ca4 - <stc_ts_module_loader::ModuleGraph<C,R> as swc_graph_analyzer::DepGraph>::deps_of::hc4036b89d0a5c972
+                               at /home/redfire/stc/crates/stc_ts_module_loader/src/lib.rs:387:17
+  18:     0x7f733ad41c2d - <&T as swc_graph_analyzer::DepGraph>::deps_of::h00c98e9e1773d68c
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/swc_graph_analyzer-0.18.15/src/lib.rs:7:1
+  19:     0x7f733ad2f7c2 - add_to_graph<&stc_ts_module_loader::ModuleGraph<stc_ts_utils::comments::StcComments, alloc::sync::Arc<dyn swc_ecma_loader::resolve::Resolve>>>
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/swc_graph_analyzer-0.18.15/src/lib.rs:89:30
+  20:     0x7f733ad3045e - load<&stc_ts_module_loader::ModuleGraph<stc_ts_utils::comments::StcComments, alloc::sync::Arc<dyn swc_ecma_loader::resolve::Resolve>>>
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/swc_graph_analyzer-0.18.15/src/lib.rs:43:9
+  21:     0x7f733ad411bd - stc_ts_module_loader::ModuleGraph<C,R>::load_all::hf351bd47b0997822
+                               at /home/redfire/stc/crates/stc_ts_module_loader/src/lib.rs:115:13
+  22:     0x7f733ad49f3b - {closure#0}
+                               at /home/redfire/stc/crates/stc_ts_type_checker/src/lib.rs:114:22
+  23:     0x7f733ad49e63 - stc_ts_type_checker::Checker::run::{{closure}}::h180d36018f876185
+                               at /home/redfire/stc/crates/stc_ts_type_checker/src/lib.rs:85:55
+  24:     0x7f733ad10b04 - scoped_tls::ScopedKey<T>::set::heb3e5a1f76809e6c
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/scoped-tls-1.0.1/src/lib.rs:137:9
+  25:     0x7f733acfd341 - better_scoped_tls::ScopedKey<T>::set::hee37b80f41c120e2
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/better_scoped_tls-0.1.0/src/lib.rs:55:9
+  26:     0x7f733ad49c72 - stc_ts_type_checker::Checker::run::h5c99a9ff672ff98d
+                               at /home/redfire/stc/crates/stc_ts_type_checker/src/lib.rs:85:9
+  27:     0x7f733acbdf00 - stc_ts_type_checker::Checker::check::h7a8eabe43ba7def0
+                               at /home/redfire/stc/crates/stc_ts_type_checker/src/lib.rs:111:9
+  28:     0x7f73398d55f7 - {async_block#0}
+                               at /home/redfire/stc/src/main.rs:119:17
+  29:     0x7f733ab49631 - poll<stc::main::{async_block_env#0}>
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/core/src/future/mod.rs:91:19
+  30:     0x7f7339e97570 - {closure#0}<core::future::from_generator::GenFuture<stc::main::{async_block_env#0}>>
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-1.21.2/src/park/thread.rs:267:54
+  31:     0x7f7339be10a3 - {closure#0}<core::task::poll::Poll<core::result::Result<(), anyhow::Error>>, tokio::park::thread::{impl#5}::block_on::{closure_env#0}<core::future::from_generator::GenFuture<stc::main::{async_block_env#0}>>>
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-1.21.2/src/coop.rs:102:9
+  32:     0x7f73398d88a6 - try_with<core::cell::Cell<tokio::coop::Budget>, tokio::coop::with_budget::{closure_env#0}<core::task::poll::Poll<core::result::Result<(), anyhow::Error>>, tokio::park::thread::{impl#5}::block_on::{closure_env#0}<core::future::from_generator::GenFuture<stc::main::{async_block_env#0}>>>, core::task::poll::Poll<core::result::Result<(), anyhow::Error>>>
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/thread/local.rs:446:16
+  33:     0x7f73398d7bbd - std::thread::local::LocalKey<T>::with::ha95ecfd3d1182bc1
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/thread/local.rs:422:9
+  34:     0x7f7339e973d4 - with_budget<core::task::poll::Poll<core::result::Result<(), anyhow::Error>>, tokio::park::thread::{impl#5}::block_on::{closure_env#0}<core::future::from_generator::GenFuture<stc::main::{async_block_env#0}>>>
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-1.21.2/src/coop.rs:95:5
+  35:     0x7f7339e973d4 - budget<core::task::poll::Poll<core::result::Result<(), anyhow::Error>>, tokio::park::thread::{impl#5}::block_on::{closure_env#0}<core::future::from_generator::GenFuture<stc::main::{async_block_env#0}>>>
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-1.21.2/src/coop.rs:72:5
+  36:     0x7f7339e973d4 - block_on<core::future::from_generator::GenFuture<stc::main::{async_block_env#0}>>
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-1.21.2/src/park/thread.rs:267:31
+  37:     0x7f7339f476bb - tokio::runtime::enter::Enter::block_on::h39d985c4929fcd09
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-1.21.2/src/runtime/enter.rs:152:13
+  38:     0x7f7339f7ac70 - tokio::runtime::scheduler::multi_thread::MultiThread::block_on::ha8b324cac7e1e963
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-1.21.2/src/runtime/scheduler/multi_thread/mod.rs:79:9
+  39:     0x7f73398c6bbe - tokio::runtime::Runtime::block_on::h71acdfd3a4ecb939
+                               at /home/redfire/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-1.21.2/src/runtime/mod.rs:492:44
+  40:     0x7f7339d690a1 - stc::main::hebdc8058c6321399
+                               at /home/redfire/stc/src/main.rs:147:5
+  41:     0x7f7339ebb65b - core::ops::function::FnOnce::call_once::h395379556194434e
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/core/src/ops/function.rs:510:5
+  42:     0x7f7339f472be - __rust_begin_short_backtrace<fn() -> core::result::Result<(), anyhow::Error>, core::result::Result<(), anyhow::Error>>
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/sys_common/backtrace.rs:121:18
+  43:     0x7f7339e55ed1 - {closure#0}<core::result::Result<(), anyhow::Error>>
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/rt.rs:166:18
+  44:     0x7f733c8cf99b - core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once::h7e3c61f7760883a2
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/core/src/ops/function.rs:606:13
+  45:     0x7f733c8cf99b - std::panicking::try::do_call::h671168417798cea6
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:483:40
+  46:     0x7f733c8cf99b - std::panicking::try::h094a03e9f50685d7
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:447:19
+  47:     0x7f733c8cf99b - std::panic::catch_unwind::hb90806ca568fade9
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panic.rs:137:14
+  48:     0x7f733c8cf99b - std::rt::lang_start_internal::{{closure}}::haa079f20e4f6cb75
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/rt.rs:148:48
+  49:     0x7f733c8cf99b - std::panicking::try::do_call::hd66593702fadf211
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:483:40
+  50:     0x7f733c8cf99b - std::panicking::try::h7aa01ee0e123edb5
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panicking.rs:447:19
+  51:     0x7f733c8cf99b - std::panic::catch_unwind::h424d76f1f4b0f1b4
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/panic.rs:137:14
+  52:     0x7f733c8cf99b - std::rt::lang_start_internal::h89190fbc908677f4
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/rt.rs:148:20
+  53:     0x7f7339e55eaa - std::rt::lang_start::h1ce97a918b2df197
+                               at /rustc/7eef946fc0e0eff40e588eab77b09b287accbec3/library/std/src/rt.rs:165:17
+  54:     0x7f7339d6914e - main
+  55:     0x7f73384a718a - <unknown>
+  56:     0x7f73384a7245 - __libc_start_main
+  57:     0x7f73396903a1 - _start
+  58:                0x0 - <unknown>
